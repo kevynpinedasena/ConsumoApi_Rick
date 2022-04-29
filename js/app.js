@@ -1,6 +1,7 @@
 const URL = "https://rickandmortyapi.com/api/character";
 const card = document.querySelector('.carta');
 const input = document.getElementById('input_bus');
+const err = document.querySelector('#error');
 
 window.addEventListener('load', fetchRick);
 Sortable.create(card, {});
@@ -59,4 +60,6 @@ function search() {
     fetch(search)
     .then(response => response.json())
     .then(data => cart(data.results))
+    .catch(err.textContent = "No se encuentran resultados");
+    
 }
